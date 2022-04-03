@@ -1,0 +1,40 @@
+{
+    "objects": [
+        {
+            "text": "Agreement",
+            "lang": "en",
+            "type": "Noun",
+            "synonyms": [
+                {
+                    "text": "Соглашение",
+                    "lang": "ru"
+                },
+                {
+                    "text": "Договор",
+                    "lang": "ru"
+                }
+            ],
+            "morph": [
+                "common",
+                "count",
+                "neuter"
+            ]
+        },
+        {
+            "text": "Achieve",
+            "lang": "en",
+            "type": "Noun",
+            "synonyms": [
+                {
+                    "text": "Достигать",
+                    "lang": "ru"
+                }
+            ],
+            "morph": [
+                "common",
+                "count",
+                "neuter"
+            ]
+        }
+    ]
+}
