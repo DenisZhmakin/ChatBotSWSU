@@ -48,7 +48,7 @@ def _main():
             else:
                 break
 
-    with open('../../BackendService/storage/idioms.json', 'w', encoding='utf-8') as file:
+    with open('../../storage/idioms.json', 'w', encoding='utf-8') as file:
         json.dump(obj, file, indent=4, ensure_ascii=False)
 
 
