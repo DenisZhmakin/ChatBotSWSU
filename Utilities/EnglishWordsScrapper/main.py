@@ -48,7 +48,7 @@ def _main():
                         else:
                             speech_parts.append(part.text)
 
-                    with open('../../storage/english_words.json', 'r+', encoding='utf-8') as file:
+                    with open('../../Storage/english_words.json', 'r+', encoding='utf-8') as file:
                         words = json.load(file)
                         file.seek(0)
                         words["english_words"].append({
