@@ -6,7 +6,7 @@ class SearchEngine:
     @staticmethod
     def search(text: str, type_search: str):
         if type_search == "idiom":
-            json_string = json.loads(Path('../Storage/idioms.json').read_text())
+            json_string = json.loads(Path('../storage/idioms.json').read_text())
 
             for idiom in json_string["idioms"]:
                 if idiom['text'] == text:

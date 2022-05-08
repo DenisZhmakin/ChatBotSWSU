@@ -1,15 +1,13 @@
 from googletrans import Translator
 from vk_api import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
-from vk_api.keyboard import VkKeyboardColor, VkKeyboard
 
-from Bots.vk.keyboard import VkKeyBoard
-from settings import VK_TOKEN
+from chatbots.vkontakte.keyboard import VkKeyBoard
 
 
-class VkBot:
-    def __init__(self):
-        self.vk_session = vk_api.VkApi(token=VK_TOKEN)
+class VkontakteBot:
+    def __init__(self, token: str):
+        self.vk_session = vk_api.VkApi(token=token)
         self.long_poll = VkBotLongPoll(self.vk_session, '210776300')
 
         self.action_dictionary_status = False

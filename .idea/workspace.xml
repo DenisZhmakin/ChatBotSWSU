@@ -2,7 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c0332e8-168a-4eea-b095-80e4ef488f08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbots/telegram/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbots/telegram/keyboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbots/telegram/tg_bot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbots/vkontakte/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ChatBotSWSU.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ChatBotSWSU.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/abbreviation.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/abbreviation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/cliche.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/cliche.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/idiom.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/idiom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/phrase.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/phrase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/entities/word.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/entities/word.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/search_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/search_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/tg/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/tg/tg_bot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/vk/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/vk/keyboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbots/vkontakte/keyboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bots/vk/vk_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/chatbots/vkontakte/vk_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/abbreviation.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/abbreviation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/english_words (копия).json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/english_words (копия).json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/english_words.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/english_words.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/idioms.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/idioms.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/save.py" beforeDir="false" afterPath="$PROJECT_DIR$/storage/save.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/words.json" beforeDir="false" afterPath="$PROJECT_DIR$/storage/words.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utilities/EnglishWordsScrapper/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utilities/EnglishWordsScrapper/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Utilities/IdiomParser/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Utilities/IdiomParser/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +115,9 @@
       <updated>1651994813313</updated>
       <workItem from="1651994818684" duration="7855000" />
       <workItem from="1652003503863" duration="75000" />
-      <workItem from="1652008363214" duration="361000" />
+      <workItem from="1652008363214" duration="1095000" />
+      <workItem from="1652009479903" duration="5285000" />
+      <workItem from="1652015261130" duration="943000" />
     </task>
     <servers />
   </component>
@@ -104,6 +136,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ChatBotSWSU$main.coverage" NAME="main Coverage Results" MODIFIED="1652003514192" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatBotSWSU$main.coverage" NAME="main Coverage Results" MODIFIED="1652015620599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
