@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import os
 from threading import Thread
 
@@ -13,11 +14,8 @@ def _main():
     vkbot = VkontakteBot(os.getenv("VK_TOKEN"))
     tgbot = TelegramBot(os.getenv("TG_TOKEN"))
 
-    t1 = Thread(target=vkbot.run_bot)
-    t2 = Thread(target=tgbot.run_bot)
-
-    t1.start()
-    t2.start()
+    Thread(target=vkbot.run_bot).start()
+    Thread(target=tgbot.run_bot).start()
 
 
 if __name__ == '__main__':

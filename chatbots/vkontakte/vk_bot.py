@@ -25,40 +25,36 @@ class VkontakteBot:
 
         self.vk_session.method("messages.send", post)
 
-    def run_bot(self):
-        for event in self.long_poll.listen():
-            if event.type == VkBotEventType.MESSAGE_NEW:
-                if event.message.text == "Начать":
-                    keyboard = VkKeyBoard.get_standard_keyboard()
-                    self.set_keyboard(
-                        event.message.from_id,
-                        message="Добро пожаловать!",
-                        keyboard=keyboard
-                    )
-                elif event.message.text == "Подобрать перевод":
-                    if not self.action_dictionary_status:
-                        self.send_message(event.message.from_id, "Введите то, что хотите найти в словаре")
-                        self.action_dictionary_status = True
-                elif event.message.text == "Перевести текст":
-                    if not self.action_dictionary_status:
-                        self.send_message(event.message.from_id, "Введите то, что хотите перевести")
-                        self.action_translate_status = True
-                elif event.message.text == "Завершить работу":
-                    keyboard = VkKeyBoard.get_initial_keyboard()
-                    self.set_keyboard(
-                        event.message.from_id,
-                        message="Досвидания",
-                        keyboard=keyboard
-                    )
-                else:
-                    if self.action_dictionary_status:
-                        self.send_message(event.message.from_id, event.message.text)
-                        self.action_dictionary_status = False
-
-                    if self.action_translate_status:
-                        text = self.translator.translate(event.message.text, dest='en').text
-                        self.send_message(event.message.from_id, text)
-                        self.action_translate_status = False
+    def message_handler(self, message):
+        if message.text == "Начать":
+            keyboard = VkKeyBoard.get_standard_keyboard()
+            self.set_keyboard(
+                message.from_id,
+                message="Добро пожаловать!",
+                keyboard=keyboard
+            )
+        elif message.text == "Подобрать синоним":
+            if not self.action_dictionary_status:
+                self.send_message(message.from_id, "Введите то, что хотите найти в словаре")
+                self.action_dictionary_status = True
+        elif message.text == "Перевести текст":
+            if not self.action_dictionary_status:
+                self.send_message(message.from_id, "Введите то, что хотите перевести")
+                self.action_translate_status = True
+        elif self.action_dictionary_status:
+            self.send_message(message.from_id, message.text)
+            self.action_dictionary_status = False
+        elif self.action_translate_status:
+            text = self.translator.translate(message.text, dest='en').text
+            self.send_message(message.from_id, text)
+            self.action_translate_status = False
+        elif message.text == "Завершить работу":
+            keyboard = VkKeyBoard.get_initial_keyboard()
+            self.set_keyboard(
+                message.from_id,
+                message="До свидания.",
+                keyboard=keyboard
+            )
 
     def send_message(self, user_id, text):
         post = {
@@ -68,3 +64,8 @@ class VkontakteBot:
         }
 
         self.vk_session.method("messages.send", post)
+
+    def run_bot(self):
+        for event in self.long_poll.listen():
+            if event.type == VkBotEventType.MESSAGE_NEW:
+                self.message_handler(event.message)
