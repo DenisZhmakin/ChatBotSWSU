@@ -26,6 +26,17 @@ class VkontakteBot:
         self.vk_session.method("messages.send", post)
 
     def message_handler(self, message):
+        if self.action_dictionary_status:
+            self.send_message(message.from_id, message.text)
+            self.action_dictionary_status = False
+            return
+
+        if self.action_translate_status:
+            text = self.translator.translate(message.text, dest='en').text
+            self.send_message(message.from_id, text)
+            self.action_translate_status = False
+            return
+
         if message.text == "Начать":
             keyboard = VkKeyBoard.get_standard_keyboard()
             self.set_keyboard(
@@ -41,13 +52,6 @@ class VkontakteBot:
             if not self.action_dictionary_status:
                 self.send_message(message.from_id, "Введите то, что хотите перевести")
                 self.action_translate_status = True
-        elif self.action_dictionary_status:
-            self.send_message(message.from_id, message.text)
-            self.action_dictionary_status = False
-        elif self.action_translate_status:
-            text = self.translator.translate(message.text, dest='en').text
-            self.send_message(message.from_id, text)
-            self.action_translate_status = False
         elif message.text == "Завершить работу":
             keyboard = VkKeyBoard.get_initial_keyboard()
             self.set_keyboard(

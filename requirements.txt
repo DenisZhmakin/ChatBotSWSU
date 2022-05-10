@@ -4,3 +4,5 @@ pyTelegramBotAPI==4.5.1
 python-dotenv==0.20.0
 requests==2.25.1
 vk_api==11.9.8
+pathvalidate~=2.5.0
+jsonlines~=3.0.0

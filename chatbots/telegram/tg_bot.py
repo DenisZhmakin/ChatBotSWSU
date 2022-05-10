@@ -18,6 +18,17 @@ class TelegramBot:
         self.tg_bot.send_message(chat_id, text, reply_markup=keyboard)
 
     def message_handler(self, message):
+        if self.action_dictionary_status:
+            self.send_message(message.chat.id, message.text)
+            self.action_dictionary_status = False
+            return
+
+        if self.action_translate_status:
+            text = self.translator.translate(message.text, dest='en').text
+            self.send_message(message.chat.id, text)
+            self.action_translate_status = False
+            return
+
         if message.text == "/start" or message.text == "Начать":
             keyboard = TgKeyBoard.get_standard_keyboard()
 
@@ -34,13 +45,6 @@ class TelegramBot:
             if not self.action_dictionary_status:
                 self.send_message(message.chat.id, "Введите то, что хотите перевести")
                 self.action_translate_status = True
-        elif self.action_dictionary_status:
-            self.send_message(message.chat.id, message.text)
-            self.action_dictionary_status = False
-        elif self.action_translate_status:
-            text = self.translator.translate(message.text, dest='en').text
-            self.send_message(message.chat.id, text)
-            self.action_translate_status = False
         elif message.text == "Завершить работу":
             keyboard = TgKeyBoard.get_initial_keyboard()
 
