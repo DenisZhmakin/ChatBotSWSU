@@ -7,7 +7,7 @@ class TgKeyBoard:
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
 
         keyboard.add(
-            types.KeyboardButton('Подобрать синоним'),
+            types.KeyboardButton('Поиск по идиомам'),
             types.KeyboardButton('Перевести текст'),
             types.KeyboardButton('Завершить работу')
         )

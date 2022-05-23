@@ -1,5 +1,7 @@
 from googletrans import Translator
 
+from backend.exceptions.lang_exception import LanguageSupportNotImplementedException
+from backend.search_engine import SearchEngine
 from chatbots.telegram.keyboard import TgKeyBoard
 
 
@@ -19,13 +21,16 @@ class TelegramBot:
 
     def message_handler(self, message):
         if self.action_dictionary_status:
-            self.send_message(message.chat.id, message.text)
+            engine = SearchEngine()
+            result = engine.find_idiom(message.text)
+            self.send_message(message.chat.id, result)
             self.action_dictionary_status = False
             return
 
         if self.action_translate_status:
-            text = self.translator.translate(message.text, dest='en').text
-            self.send_message(message.chat.id, text)
+            engine = SearchEngine()
+            result = engine.get_translate(message.text)
+            self.send_message(message.chat.id, result)
             self.action_translate_status = False
             return
 

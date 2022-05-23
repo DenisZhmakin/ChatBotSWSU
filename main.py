@@ -11,10 +11,10 @@ from chatbots.vkontakte import VkontakteBot
 def _main():
     load_dotenv()
 
-    vkbot = VkontakteBot(os.getenv("VK_TOKEN"))
+    # vkbot = VkontakteBot(os.getenv("VK_TOKEN"))
     tgbot = TelegramBot(os.getenv("TG_TOKEN"))
 
-    Thread(target=vkbot.run_bot).start()
+    # Thread(target=vkbot.run_bot).start()
     Thread(target=tgbot.run_bot).start()
 
 

@@ -2,6 +2,8 @@ from googletrans import Translator
 from vk_api import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 
+from backend.exceptions.lang_exception import LanguageSupportNotImplementedException
+from backend.search_engine import SearchEngine
 from chatbots.vkontakte.keyboard import VkKeyBoard
 
 
@@ -27,13 +29,21 @@ class VkontakteBot:
 
     def message_handler(self, message):
         if self.action_dictionary_status:
-            self.send_message(message.from_id, message.text)
+            engine = SearchEngine()
+            result = engine.get_translate(message.text)
+            self.send_message(message.from_id, result)
             self.action_dictionary_status = False
             return
 
         if self.action_translate_status:
-            text = self.translator.translate(message.text, dest='en').text
-            self.send_message(message.from_id, text)
+            engine = SearchEngine()
+
+            try:
+                result = engine.get_translate(message.text)
+            except LanguageSupportNotImplementedException as e:
+                result = e.message
+
+            self.send_message(message.from_id, result)
             self.action_translate_status = False
             return
 
