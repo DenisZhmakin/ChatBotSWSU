@@ -1,8 +1,8 @@
+beautifulsoup4==4.11.1
+pycld3==0.22
 googletrans==3.1.0a0
 pyTelegramBotAPI==4.5.1
 python-dotenv==0.20.0
+requests==2.25.1
 SQLAlchemy==1.4.36
 vk_api==11.9.8
-requests~=2.27.1
-jsonlines~=3.0.0
-langdetect~=1.0.9

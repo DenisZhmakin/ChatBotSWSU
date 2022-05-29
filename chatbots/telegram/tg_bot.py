@@ -42,7 +42,7 @@ class TelegramBot:
                 "Добро пожаловать!!!",
                 keyboard
             )
-        elif message.text == "Подобрать синоним":
+        elif message.text == "Поиск по идиомам":
             if not self.action_dictionary_status:
                 self.send_message(message.chat.id, "Введите то, что хотите найти в словаре")
                 self.action_dictionary_status = True

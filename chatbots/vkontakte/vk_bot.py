@@ -30,7 +30,7 @@ class VkontakteBot:
     def message_handler(self, message):
         if self.action_dictionary_status:
             engine = SearchEngine()
-            result = engine.get_translate(message.text)
+            result = engine.find_idiom(message.text)
             self.send_message(message.from_id, result)
             self.action_dictionary_status = False
             return
@@ -54,7 +54,7 @@ class VkontakteBot:
                 message="Добро пожаловать!",
                 keyboard=keyboard
             )
-        elif message.text == "Подобрать синоним":
+        elif message.text == "Поиск по идиомам":
             if not self.action_dictionary_status:
                 self.send_message(message.from_id, "Введите то, что хотите найти в словаре")
                 self.action_dictionary_status = True
