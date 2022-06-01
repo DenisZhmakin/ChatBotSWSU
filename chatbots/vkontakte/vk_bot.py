@@ -30,7 +30,7 @@ class VkontakteBot:
     def message_handler(self, message):
         if self.action_dictionary_status:
             engine = SearchEngine()
-            result = engine.find_idiom(message.text)
+            result = engine.find_abbreviations(message.text)
             self.send_message(message.from_id, result)
             self.action_dictionary_status = False
             return

@@ -1,5 +1,6 @@
 import cld3
 from googletrans import Translator
+from sqlalchemy import and_
 
 from backend.database import Database
 from backend.literals.lang import Language
@@ -28,12 +29,34 @@ class SearchEngine:
         if result is not None:
             return self.get_translate(result.explanation)
 
-        return "Сининим не найден"
+        return "Идиома не найдена"
 
     def find_abbreviations(self, abbr_text: str):
         from sqlalchemy import select
 
-        return self
+        acronyms = self.db.acronyms
+        subcategories = self.db.subcategories
+        conn = self.db.engine.connect()
+
+        abbreviations = conn.execute(select([
+            acronyms.c.reduction,
+            acronyms.c.transcript,
+            subcategories.c.name
+        ]).select_from(
+            acronyms.join(subcategories)
+        ).where(
+            acronyms.c.reduction == abbr_text
+        )).fetchall()
+
+        if abbreviations is not None:
+            result = ""
+            # ('API', 'Academic Perofrmance Index', 'Academic & Science')
+            for elem in abbreviations:
+                result += f"Расшифровка: {self.translator.translate(elem[1], dest='ru').text}\n" + \
+                          f"Категория: {self.translator.translate(elem[2], dest='ru').text}\n"
+            return result
+
+        return "Аббревиатура не найдена"
 
     def get_translate(self, text: str):
         source = SearchEngine.lang_detect(text)
