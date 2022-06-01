@@ -4,8 +4,8 @@ from threading import Thread
 
 from dotenv import load_dotenv
 
-from chatbots.telegram import TelegramBot
-from chatbots.vkontakte import VkontakteBot
+from chatbots import TelegramBot
+from chatbots import VkontakteBot
 
 
 def _main():
@@ -14,8 +14,8 @@ def _main():
     vkbot = VkontakteBot(os.getenv("VK_TOKEN"))
     tgbot = TelegramBot(os.getenv("TG_TOKEN"))
 
-    Thread(target=vkbot.run_bot).start()
-    Thread(target=tgbot.run_bot).start()
+    Thread(target=vkbot.run).start()
+    Thread(target=tgbot.run).start()
 
 
 if __name__ == '__main__':
