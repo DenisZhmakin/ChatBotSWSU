@@ -46,7 +46,7 @@ class SearchEngine:
             acronyms.join(subcategories)
         ).where(
             acronyms.c.reduction == abbr_text
-        )).fetchall()
+        ).limit(10)).fetchall()
 
         if abbreviations is not None:
             result = ""
