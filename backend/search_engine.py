@@ -1,8 +1,10 @@
 import cld3
+import requests
 from googletrans import Translator
 from sqlalchemy import and_
 
 from backend.database import Database
+from backend.entities.word import Word
 from backend.literals.lang import Language
 
 
@@ -57,6 +59,34 @@ class SearchEngine:
             return result
 
         return "Аббревиатура не найдена"
+
+    @staticmethod
+    def get_word_info(word: str):
+        response = requests.get(
+            'https://dictionary.yandex.net/dicservice.json/lookupMultiple',
+            params={
+                'ui': 'ru',
+                'srv': 'tr-text',
+                'text': word,
+                'type': 'regular,syn,ant,deriv',
+                'lang': 'en-ru',
+                'flags': '15783',
+                'dict': 'en-ru.regular,en.syn,en.ant,en.deriv',
+            },
+            headers={
+                'Accept': '*/*',
+                'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+                'Origin': 'https://translate.yandex.ru',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Referer': 'https://translate.yandex.ru/',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'cross-site',
+            }
+        ).json()
+
+        return Word.from_json(response)
 
     def get_translate(self, text: str):
         source = SearchEngine.lang_detect(text)
