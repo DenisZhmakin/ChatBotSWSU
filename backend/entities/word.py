@@ -76,10 +76,11 @@ class Word:
 
     @classmethod
     def from_json(cls, json: dict):
-        return cls(
-            speech_part=json['en-ru']['regular'][0]['pos']['tooltip'] if json['en-ru']['regular'] else "",
-            translates=Word.get_translates(json['en-ru']['regular']),
-            synonyms=Word.get_synonyms(json['en']['syn']),
-            antonyms=Word.get_antonyms(json['en']['ant']),
-            related_words=Word.get_related_words(json['en']['deriv'])
-        )
+        if 'code' not in json:
+            return cls(
+                speech_part=json['en-ru']['regular'][0]['pos']['tooltip'] if json['en-ru']['regular'] else "",
+                translates=Word.get_translates(json['en-ru']['regular']),
+                synonyms=Word.get_synonyms(json['en']['syn']),
+                antonyms=Word.get_antonyms(json['en']['ant']),
+                related_words=Word.get_related_words(json['en']['deriv'])
+            )

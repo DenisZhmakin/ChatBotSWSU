@@ -25,7 +25,7 @@ class SearchEngine:
         conn = self.db.engine.connect()
 
         result = conn.execute(select([idioms]).where(
-            idioms.c.phrase == idiom_text
+            idioms.c.phrase == idiom_text.lower()
         )).fetchone()
 
         if result is not None:
@@ -47,7 +47,7 @@ class SearchEngine:
         ]).select_from(
             acronyms.join(subcategories)
         ).where(
-            acronyms.c.reduction == abbr_text
+            acronyms.c.reduction == abbr_text.upper()
         ).limit(10)).fetchall()
 
         if abbreviations is not None:
